@@ -1,0 +1,9 @@
+{
+  "juegos": [
+    { "id": "aventuras", "nombre": "🎨 Aventuras del Color", "habilitado": true, "desc": "Mezcla colores para crear el objetivo." },
+    { "id": "mates", "nombre": "🔢 Matemáticas Mágicas", "habilitado": false, "desc": "Próximamente." },
+    { "id": "sonidos", "nombre": "🔊 Sonidos del Mundo", "habilitado": false, "desc": "Próximamente." },
+    { "id": "puzzle", "nombre": "🧩 Puzzle de Formas", "habilitado": false, "desc": "Próximamente." },
+    { "id": "planeta", "nombre": "🌍 Guardianes del Planeta", "habilitado": false, "desc": "Próximamente." }
+  ]
+}

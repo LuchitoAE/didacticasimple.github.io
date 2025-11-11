@@ -1,0 +1,43 @@
+{
+  "palette": [
+    "rojo", "azul", "amarillo", "blanco", "negro",
+    "verde", "marrón", "naranja", "morado", "rosa",
+    "gris", "celeste", "cian", "magenta", "oliva",
+    "lila", "turquesa", "lima"
+  ],
+  "mixRules": [
+    {"a":"rojo","b":"amarillo","result":"naranja"},
+    {"a":"amarillo","b":"rojo","result":"naranja"},
+
+    {"a":"azul","b":"amarillo","result":"verde"},
+    {"a":"amarillo","b":"azul","result":"verde"},
+
+    {"a":"rojo","b":"azul","result":"morado"},
+    {"a":"azul","b":"rojo","result":"morado"},
+
+    {"a":"rojo","b":"blanco","result":"rosa"},
+    {"a":"blanco","b":"rojo","result":"rosa"},
+
+    {"a":"negro","b":"blanco","result":"gris"},
+    {"a":"blanco","b":"negro","result":"gris"},
+
+    {"a":"azul","b":"blanco","result":"celeste"},
+    {"a":"blanco","b":"azul","result":"celeste"},
+
+    {"a":"rojo","b":"verde","result":"marrón"},
+    {"a":"verde","b":"rojo","result":"marrón"},
+
+    {"a":"amarillo","b":"negro","result":"oliva"},
+    {"a":"negro","b":"amarillo","result":"oliva"},
+
+    {"a":"azul","b":"verde","result":"turquesa"},
+    {"a":"blanco","b":"morado","result":"lila"},
+
+    {"a":"amarillo","b":"cian","result":"verde"},
+    {"a":"amarillo","b":"magenta","result":"naranja"},
+    {"a":"rojo","b":"cian","result":"magenta"}
+  ],
+  "targets": [
+    "naranja","verde","morado","rosa","gris","celeste","marrón","oliva","turquesa","lila"
+  ]
+}

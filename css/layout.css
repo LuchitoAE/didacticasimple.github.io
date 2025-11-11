@@ -1,0 +1,50 @@
+/* Layout y responsive */
+#home{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  min-height:100dvh; text-align:center; padding-inline:1rem;
+}
+
+#crearSala, #unirseSala, #sala, #aventuras{
+  margin-top:1rem; margin-bottom:2rem;
+}
+
+/* Header de juego */
+.game-header{
+  display:flex; gap:1rem; align-items:center; flex-wrap:wrap; justify-content:space-between;
+  background:var(--card); padding:1rem; border-radius:1rem; box-shadow:0 6px 18px rgba(0,0,0,.06);
+}
+.target-box{display:flex; align-items:center; gap:.75rem}
+.target-label{font-size:.9rem; color:var(--muted)}
+.target-color{
+  width:70px; height:70px; border-radius:.8rem; border:3px solid var(--accent);
+}
+.target-name{font-weight:600}
+
+/* Paleta */
+.palette{
+  display:grid; grid-template-columns:repeat(8, minmax(42px,1fr)); gap:.65rem; margin:1rem 0;
+}
+.swatch{
+  width:100%; aspect-ratio:1/1; border-radius:50%; cursor:pointer; border:3px solid transparent;
+  box-shadow:0 6px 14px rgba(0,0,0,.08); transition:transform .12s ease, border .12s ease;
+}
+.swatch:hover{transform:translateY(-1.5px)}
+.swatch.selected{border-color:var(--secondary)}
+
+.helper{margin:.5rem 0 0;color:var(--muted)}
+.game-actions{display:flex; gap:.5rem; flex-wrap:wrap}
+
+.result{
+  min-height:28px; display:flex; align-items:center; justify-content:center; font-weight:700;
+}
+.result.ok{color:var(--ok)}
+.result.bad{color:var(--error)}
+
+/* Responsivo */
+@media (max-width:720px){
+  .form-grid{grid-template-columns:1fr}
+  .palette{grid-template-columns:repeat(5, minmax(42px,1fr))}
+}
+@media (max-width:440px){
+  .palette{grid-template-columns:repeat(4, minmax(42px,1fr))}
+}

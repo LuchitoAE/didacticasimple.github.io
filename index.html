@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Juegos Didácticos Web</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/layout.css"/>
+  <link rel="stylesheet" href="css/juegos.css"/>
+</head>
+<body>
+  <div id="app">
+
+    <!-- HOME -->
+    <section id="home" class="screen active">
+      <h1>🎨 Juegos Didácticos Web</h1>
+      <p class="subtitle">Cooperativos, sencillos y 100% en navegador</p>
+      <div class="menu-buttons">
+        <button id="btnCrear" class="btn primary">Crear Sala</button>
+        <button id="btnUnirse" class="btn">Unirse a Sala</button>
+      </div>
+    </section>
+
+    <!-- CREAR SALA -->
+    <section id="crearSala" class="screen">
+      <h2>Crear Sala</h2>
+
+      <div class="form-grid">
+        <label for="numGrupos">Cantidad de grupos (1–10)</label>
+        <input type="number" id="numGrupos" min="1" max="10" value="2"/>
+
+        <label for="numIntegrantes">Integrantes por grupo (2–15)</label>
+        <input type="number" id="numIntegrantes" min="2" max="15" value="5"/>
+
+        <label for="juegoSelect">Seleccionar juego</label>
+        <select id="juegoSelect"></select>
+      </div>
+
+      <div class="actions">
+        <button id="btnCrearSala" class="btn primary">Crear</button>
+        <button class="btn ghost back">Volver</button>
+      </div>
+    </section>
+
+    <!-- UNIRSE A SALA (simple local) -->
+    <section id="unirseSala" class="screen">
+      <h2>Unirse a Sala</h2>
+      <div class="form-grid">
+        <label for="codigoEntrada">Código de sala</label>
+        <input type="text" id="codigoEntrada" placeholder="ABC123"/>
+      </div>
+      <div class="actions">
+        <button id="btnIngresarSala" class="btn primary">Ingresar</button>
+        <button class="btn ghost back">Volver</button>
+      </div>
+      <p class="muted">Nota: Es una demo local. La “sala” existe en este mismo navegador.</p>
+    </section>
+
+    <!-- SALA CREADA -->
+    <section id="sala" class="screen">
+      <h2>Sala Creada</h2>
+      <div class="room-card">
+        <p><strong>Código:</strong> <span id="codigoSala">—</span></p>
+        <p id="infoSala">—</p>
+      </div>
+      <div class="actions">
+        <button id="btnComenzar" class="btn primary">Comenzar Juego</button>
+        <button class="btn ghost back">Volver</button>
+      </div>
+    </section>
+
+    <!-- JUEGO: AVENTURAS DEL COLOR -->
+    <section id="aventuras" class="screen">
+      <header class="game-header">
+        <h2>🎨 Aventuras del Color</h2>
+        <div class="target-box">
+          <div class="target-label">Color objetivo</div>
+          <div id="targetColor" class="target-color"></div>
+          <div id="targetName" class="target-name">—</div>
+        </div>
+      </header>
+
+      <p class="helper">Selecciona <strong>dos</strong> colores de la paleta para crear el color objetivo.</p>
+
+      <div id="colorPalette" class="palette"></div>
+
+      <div class="game-actions">
+        <button id="btnComprobar" class="btn primary">Comprobar</button>
+        <button id="btnNuevaRonda" class="btn">Nuevo color</button>
+      </div>
+
+      <div id="resultMessage" class="result"></div>
+
+      <div class="actions">
+        <button class="btn ghost back">Salir</button>
+      </div>
+    </section>
+
+    <!-- Toast -->
+    <div id="toast" class="toast hidden"></div>
+
+  </div>
+
+  <!-- JS (el orden importa) -->
+  <script src="js/utils.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/sala.js"></script>
+  <script src="js/aventurasColor.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

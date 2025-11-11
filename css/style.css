@@ -1,0 +1,64 @@
+:root{
+  --primary:#6c63ff;
+  --secondary:#ff6584;
+  --accent:#4adede;
+  --bg:#f4f6ff;
+  --card:#ffffff;
+  --text:#333;
+  --muted:#6b7280;
+  --ok:#22c55e;
+  --error:#ef4444;
+  --ring: rgba(108,99,255,.35);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Poppins', Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+h1,h2{margin:.25rem 0 1rem}
+.subtitle{color:var(--muted);margin-top:-.5rem}
+
+.btn{
+  padding:.8rem 1.1rem;border:none;border-radius:.8rem;cursor:pointer;
+  background:#e7e9ff;color:#2b2b2b;transition:transform .06s ease, background .2s ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--primary);color:#fff}
+.btn.ghost{background:transparent;border:1px solid #cfd2ff}
+
+.menu-buttons{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center}
+
+.screen{
+  display:none; max-width:960px; margin:0 auto; padding:1.25rem;
+}
+.screen.active{display:block}
+
+.form-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:1rem; align-items:center;
+  background:var(--card); padding:1rem; border-radius:1rem; box-shadow:0 6px 18px rgba(0,0,0,.06);
+}
+.form-grid input, .form-grid select{
+  padding:.7rem .8rem; border-radius:.7rem; border:1px solid #d7d9ef; outline:none; width:100%;
+}
+.form-grid input:focus, .form-grid select:focus{box-shadow:0 0 0 4px var(--ring)}
+
+.actions{display:flex; gap:.5rem; margin-top:1rem; flex-wrap:wrap}
+
+.room-card{
+  background:var(--card); padding:1rem; border-radius:1rem; box-shadow:0 8px 22px rgba(0,0,0,.07);
+}
+
+.muted{color:var(--muted);font-size:.9rem}
+
+.toast{
+  position:fixed; bottom:18px; left:50%; transform:translateX(-50%);
+  background:#111827; color:#fff; padding:.75rem 1rem; border-radius:.7rem; box-shadow:0 8px 18px rgba(0,0,0,.4);
+  transition:opacity .2s, transform .2s; opacity:0; pointer-events:none;
+}
+.toast.show{opacity:1; transform:translateX(-50%) translateY(-4px)}
+.hidden{display:none}
