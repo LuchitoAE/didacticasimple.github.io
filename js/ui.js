@@ -1,22 +1,22 @@
-// Manejo visual básico: pantallas y toasts
-const $ = (sel, ctx=document) => ctx.querySelector(sel);
-const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+// js/ui.js
+window.App = window.App || {};
+App.ui = App.ui || {};
 
-function showScreen(id){
-  $$(".screen").forEach(s => s.classList.remove("active"));
-  $("#"+id)?.classList.add("active");
-  // limpiar estados de mensaje
-  const rm = $("#resultMessage");
-  if(rm){ rm.className = "result"; rm.textContent = ""; }
-}
+App.ui.$ = (sel, ctx = document) => ctx.querySelector(sel);
+App.ui.$$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-function toast(msg, ms=1800){
-  const t = $("#toast");
+App.ui.showScreen = function(id) {
+  this.$$(".screen").forEach(s => s.classList.remove("active"));
+  this.$(`#${id}`)?.classList.add("active");
+  const rm = this.$("#resultMessage");
+  if (rm) { rm.className = "result"; rm.textContent = ""; }
+};
+
+App.ui.toast = function(msg, ms = 1800) {
+  const t = this.$("#toast");
   t.textContent = msg;
   t.classList.remove("hidden");
   t.classList.add("show");
-  setTimeout(()=> t.classList.remove("show"), ms);
-  setTimeout(()=> t.classList.add("hidden"), ms+200);
-}
-
-App.ui = { showScreen, toast, $, $$ };
+  setTimeout(() => t.classList.remove("show"), ms);
+  setTimeout(() => t.classList.add("hidden"), ms + 200);
+};

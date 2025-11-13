@@ -1,56 +1,44 @@
-// Utilidades generales y almacenamiento local
-
+// js/utils.js
 window.App = window.App || {};
-App.state = {
-  room: null,
-  juegosCatalog: null,
-  coloresConfig: null
+App.utils = {};
+
+// 🔹 Función: generar código aleatorio
+App.utils.uid = (len = 6) => Math.random().toString(36).slice(2, 2 + len).toUpperCase();
+
+// 🔹 Limitar valores
+App.utils.clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+
+// 🔹 Guardar / leer en localStorage
+App.utils.lsGet = (key, fallback = null) => {
+  try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }
+  catch { return fallback; }
 };
 
-function uid(len=6){
-  return Math.random().toString(36).slice(2, 2+len).toUpperCase();
-}
+App.utils.lsSet = (key, val) => {
+  try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
+};
 
-function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+// 🔹 Guardar una sala
+App.utils.saveRoom = (room) => {
+  App.utils.lsSet("room_" + room.code, room);
+  App.utils.lsSet("last_room_code", room.code);
+  App.state = { room };
+};
 
-function lsGet(key, fallback=null){
-  try{ const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }
-  catch(e){ return fallback; }
-}
-function lsSet(key, value){
-  try{ localStorage.setItem(key, JSON.stringify(value)); }catch(e){}
-}
+// 🔹 Cargar una sala
+App.utils.loadRoom = (code) => App.utils.lsGet("room_" + code);
 
-function saveRoom(room){
-  lsSet("room_"+room.code, room);
-  lsSet("last_room_code", room.code);
-  App.state.room = room;
-}
-function loadRoom(code){
-  const r = lsGet("room_"+code);
-  if(r) App.state.room = r;
-  return r;
-}
-function lastRoomCode(){ return lsGet("last_room_code"); }
-
-async function loadJSON(url, fallback){
-  try{
+// 🔹 Cargar JSON (con fallback)
+App.utils.loadJSON = async (url, fallback) => {
+  try {
     const res = await fetch(url);
-    if(!res.ok) throw new Error("bad status");
+    if (!res.ok) throw new Error();
     return await res.json();
-  }catch(e){
+  } catch {
     return fallback;
   }
-}
+};
 
-function shuffle(arr){
-  const a = arr.slice();
-  for(let i=a.length-1;i>0;i--){
-    const j = Math.floor(Math.random()*(i+1));
-    [a[i],a[j]] = [a[j],a[i]];
-  }
-  return a;
-}
-function pickRandom(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
-
-App.utils = { uid, clamp, lsGet, lsSet, saveRoom, loadRoom, lastRoomCode, loadJSON, shuffle, pickRandom };
+// 🔹 Ayudas
+App.utils.shuffle = (a) => a.sort(() => Math.random() - 0.5);
+App.utils.pick = (a) => a[Math.floor(Math.random() * a.length)];
